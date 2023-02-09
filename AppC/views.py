@@ -29,4 +29,4 @@ def entregables(request):
 
 def estudiantes(request):
     return render(request, 'AppC/estudiantes.html')
-    return HttpResponse('Vista estudiantes')
+    #return HttpResponse('Vista estudiantes')
