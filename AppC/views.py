@@ -12,21 +12,21 @@ def curso(self):
 '''
 
 def inicio(request):
-    #return render(request, 'AppCoder/inicio.html') # usar el nombre del template
-    return HttpResponse('Vista Inicio')
+    return render(request, 'AppC/inicio.html') # usar el nombre del template
+    #return HttpResponse('Vista Inicio')
 
 def cursos(request):
-    #return render(request, 'AppCoder/cursos.html')
-    return HttpResponse('Vista cursos')
+    return render(request, 'AppC/cursos.html')
+    #return HttpResponse('Vista cursos')
 
 def profesores(request):
-    #return render(request, 'AppCoder/profesores.html')
-    return HttpResponse('Vista profesores')
+    return render(request, 'AppC/profesores.html')
+    #return HttpResponse('Vista profesores')
 
 def entregables(request):
-    #return render(request, 'AppCoder/entregables.html')
-    return HttpResponse('Vista entregables')
+    return render(request, 'AppC/entregables.html')
+    #return HttpResponse('Vista entregables')
 
 def estudiantes(request):
-    #return render(request, 'AppCoder/estudiantes.html')
+    return render(request, 'AppC/estudiantes.html')
     return HttpResponse('Vista estudiantes')
