@@ -1,22 +1,28 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from AppC.models import Curso
-
+from AppC.forms import CursoFormulario
 # Create your views here.
-'''
-def curso(self):
-    curso = Curso(nombre = 'Desarrollo web', comision = '19881') #igual que el nombre de la clase en models
-    curso.save()
-    documentoTexto = f'--> Curso: {curso.nombre} comision: {curso.comision}'
-    return HttpResponse(documentoTexto)
-'''
+
 
 def inicio(request):
-    return render(request, 'AppC/inicio.html') # usar el nombre del template
+    return render(request, "AppC/inicio.html", )
     #return HttpResponse('Vista Inicio')
 
 def cursos(request):
-    return render(request, 'AppC/cursos.html')
+    if request.method == "POST":
+ 
+        miFormulario = CursoFormulario(request.POST) # Aqui me llega la informacion del html
+        print(miFormulario)
+ 
+        if miFormulario.is_valid:
+            informacion = miFormulario.cleaned_data
+            curso = Curso(nombre=informacion["curso"], comision=informacion["comision"])
+            curso.save()
+            return render(request, "AppC/cursos.html", )
+    else:
+        miFormulario = CursoFormulario()
+    return render(request, 'AppC/cursos.html',{"miFormulario": miFormulario})
     #return HttpResponse('Vista cursos')
 
 def profesores(request):
@@ -30,3 +36,4 @@ def entregables(request):
 def estudiantes(request):
     return render(request, 'AppC/estudiantes.html')
     #return HttpResponse('Vista estudiantes')
+
